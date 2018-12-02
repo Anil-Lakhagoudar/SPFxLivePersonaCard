@@ -2,7 +2,7 @@
   "$schema": "https://dev.office.com/json-schemas/spfx-build/package-solution.schema.json",
   "solution": {
     "name": "sp-fx-persona-card-client-side-solution",
-    "id": "76dba7d5-6e0e-4524-8027-b1b545388c59",
+    "id": "176e0dc8-8589-4b05-ae06-1c73d56c6225",
     "version": "1.0.0.0",
     "skipFeatureDeployment": true
   },
