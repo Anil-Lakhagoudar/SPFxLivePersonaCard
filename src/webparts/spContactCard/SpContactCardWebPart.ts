@@ -21,7 +21,7 @@ export default class SpContactCardWebPart extends BaseClientSideWebPart<ISpConta
     const element: React.ReactElement<IPeopleCardProps> = React.createElement(
       SPFxPeopleCard, {  
         primaryText: this.context.pageContext.user.displayName,
-        email: this.context.pageContext.user.email,
+        email: this.context.pageContext.user.email ? this.context.pageContext.user.email : this.context.pageContext.user.loginName,
         serviceScope: this.context.serviceScope,
         class: 'persona-card',
         size: PersonaSize.extraLarge,
