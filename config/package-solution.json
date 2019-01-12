@@ -1,10 +1,11 @@
 {
-  "$schema": "https://dev.office.com/json-schemas/spfx-build/package-solution.schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
   "solution": {
     "name": "sp-fx-persona-card-client-side-solution",
     "id": "176e0dc8-8589-4b05-ae06-1c73d56c6225",
     "version": "1.0.0.0",
-    "skipFeatureDeployment": true
+    "skipFeatureDeployment": true,
+    "includeClientSideAssets": false
   },
   "paths": {
     "zippedPackage": "solution/sp-fx-persona-card.sppkg"

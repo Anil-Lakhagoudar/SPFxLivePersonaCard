@@ -1,5 +1,5 @@
 {
-  "$schema": "https://dev.office.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
   "id": "d3bd0279-303b-4b9f-a765-63d0fde29986",
   "alias": "SpContactCardWebPart",
   "componentType": "WebPart",
