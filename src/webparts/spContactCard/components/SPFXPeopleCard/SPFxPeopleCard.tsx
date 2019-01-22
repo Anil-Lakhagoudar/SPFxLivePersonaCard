@@ -7,6 +7,9 @@ import { Label, Persona, PersonaSize, IPersonaProps, PersonaInitialsColor } from
 export interface IPeopleCardProps {
     primaryText: string;
     secondaryText: string;
+    tertiaryText: string;
+    optionalText: string;
+    moreDetail: HTMLElement | string;
     email: string;
     serviceScope: ServiceScope;
     class: string;
@@ -69,6 +72,21 @@ export default class SPFxPeopleCard extends React.Component<IPeopleCardProps, IP
         return size;
     }
 
+    private getMoreDetailElement(){
+        if(React.isValidElement(this.props.moreDetail)){
+            return React.createElement('div',
+            { 
+                className: 'more-persona-details' 
+            }, this.props.moreDetail);
+        }else{
+            return React.createElement('div',
+            { 
+                className: 'more-persona-details',
+                dangerouslySetInnerHTML: { __html: this.props.moreDetail} 
+            });
+        }
+    }
+
     /**
      * Display default OfficeUIFabric Persona card if SPFx LivePersonaCard not loaded
      */
@@ -76,12 +94,14 @@ export default class SPFxPeopleCard extends React.Component<IPeopleCardProps, IP
         return React.createElement<IPersonaProps>(Persona, {
             primaryText: this.props.primaryText,
             secondaryText: this.props.secondaryText,
+            tertiaryText: this.props.tertiaryText,
+            optionalText: this.props.optionalText,
             imageUrl: this.state.pictureUrl,
             initialsColor: this.props.initialsColor,
             className: this.props.class,
             size: this.props.size,
             imageShouldFadeIn: true
-        });
+        }, this.getMoreDetailElement());
     }
 
     /**

@@ -17,6 +17,11 @@ export interface ISpContactCardWebPartProps {
 
 export default class SpContactCardWebPart extends BaseClientSideWebPart<ISpContactCardWebPartProps> {
 
+  public personaDetail(){
+    return React.createElement('Div',{}, React.createElement('span',{},'detail-1'),
+        React.createElement('span',{},'detail-2'));
+  }
+
   public render(): void {
     const element: React.ReactElement<IPeopleCardProps> = React.createElement(
       SPFxPeopleCard, {  
@@ -26,6 +31,8 @@ export default class SpContactCardWebPart extends BaseClientSideWebPart<ISpConta
         class: 'persona-card',
         size: PersonaSize.extraLarge,
         initialsColor: PersonaInitialsColor.darkBlue,
+        //moreDetail: this.personaDetail(), /* pass react element */
+        moreDetail: '<div>detail1 <br/> detail2</div>', /* pass html string */
         onCardOpenCallback: ()=>{
           console.log('WebPart','on card open callaback');
         },
