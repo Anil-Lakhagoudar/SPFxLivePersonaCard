@@ -6,15 +6,15 @@ import { Label, Persona, PersonaSize, IPersonaProps, PersonaInitialsColor } from
 
 export interface IPeopleCardProps {
     primaryText: string;
-    secondaryText: string;
-    tertiaryText: string;
-    optionalText: string;
-    moreDetail: HTMLElement | string;
+    secondaryText?: string;
+    tertiaryText?: string;
+    optionalText?: string;
+    moreDetail?: HTMLElement | string;
     email: string;
     serviceScope: ServiceScope;
     class: string;
     size: PersonaSize;
-    initialsColor: PersonaInitialsColor;
+    initialsColor?: PersonaInitialsColor;
     onCardOpenCallback: Function; 
     onCardCloseCallback: Function;   
 }
@@ -31,7 +31,7 @@ const LIVE_PERSONA_COMPONENT_ID: string = "914330ee-2df2-4f6e-a858-30c23a812408"
 const DEFAULT_PERSONA_IMG_HASH: string = "7ad602295f8386b7615b582d87bcc294";
 const PROFILE_IMAGE_URL: string = '/_layouts/15/userphoto.aspx?size={0}&accountname={1}';
 
-export default class SPFxPeopleCard extends React.Component<IPeopleCardProps, IPeopleCardState>{
+export default class SPFxPeopleCard extends React.PureComponent<IPeopleCardProps, IPeopleCardState>{
 
     constructor(props: any, context: any) {
         super(props, context);
@@ -45,7 +45,7 @@ export default class SPFxPeopleCard extends React.Component<IPeopleCardProps, IP
     public componentDidMount(): any {
         const size = this.getPersonaSize();
         const personaImgUrl = Text.format(PROFILE_IMAGE_URL, size, this.props.email);
-        
+
         this.getImageBase64(personaImgUrl).then((url: string) => {
             this.getMd5HashForUrl(url).then((newHash)=>{
                 Log.info(EXP_SOURCE, `${url} h- ${newHash}`);
@@ -97,10 +97,11 @@ export default class SPFxPeopleCard extends React.Component<IPeopleCardProps, IP
             tertiaryText: this.props.tertiaryText,
             optionalText: this.props.optionalText,
             imageUrl: this.state.pictureUrl,
-            initialsColor: this.props.initialsColor,
+            initialsColor: this.props.initialsColor ? this.props.initialsColor : "#808080",
             className: this.props.class,
             size: this.props.size,
-            imageShouldFadeIn: true
+            imageShouldFadeIn: false,
+            imageShouldStartVisible: true
         }, this.getMoreDetailElement());
     }
 
