@@ -118,6 +118,7 @@ export default class SPFxPeopleCard extends React.PureComponent<IPeopleCardProps
             },
             serviceScope: this.props.serviceScope,
             upn: this.props.email,
+            legacyUpn: this.props.email,
             onCardOpen: () => {
                 if(this.props.onCardOpenCallback){
                     this.props.onCardOpenCallback();
